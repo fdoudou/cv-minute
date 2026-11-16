@@ -38,14 +38,13 @@ An easy to use and fullstack MERN app to help people build their CV/resumes.
 - [x] Various templates
 - [x] Feature-rich CV editor
 - [x] PDF save
+- [x] Dark/light modes (upcoming)
+- [ ] Signup/Login (upcoming)
 - [ ] AI generator/reviewer/editor (upcoming)
-- [ ] Save in Google Drive (planned)
-- [ ] Dark/light modes (upcoming)
 - [ ] Save in Google Drive (planned)
 - [ ] Account and dashboard (upcoming)
 - [ ] Online share w/ custom url (planned)
 - [ ] CV import (upcoming)
-- [ ] Signup/Login (planned)
 
 ---
 

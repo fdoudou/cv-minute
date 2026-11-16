@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <header className="">
             <div className="container- flex items-center justify-between" style={{ background:"", zIndex:"9", position:"sticky", top:"0px",height:"65px"}}>
-                <Link className="fmld-mrg-left white flex items-start fmld-pdg" to="/">
+                <Link className="fmld-mrg-left flex items-start fmld-pdg" to="/">
                     <img src={applogo} width="150px" height="50px" alt="logo cv minute" />
                 </Link>
                 <nav className="flex items-center justify-center fmld-hide-mobile">
@@ -19,9 +19,9 @@ const Header = () => {
                     <span className="fmld-pdg-16"><Link to="/category">Produits</Link></span>
                 </nav>
                 <span className="flex items-center justify-between column-gap-2 fmld-pdg-16">
-                    <Link to="#contact" className="flex items-center fmld-pdg-right fmld-round btn fmld-zoom-out">Tester <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right w-4 h-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></Link>
-                    <Link to="/login" className="fmld-round btn fmld-zoom-out fmld-hide-mobile">Connexion</Link>
-                    <button className="btn fmld-pdg-8 fmld-round fmld-zoom-out fmld-hide-nomobile" ><svg className="fmld-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+                    <Link to="/builder" className="btn flex items-center fmld-pdg-right fmld-round fmld-pdg-8 fmld-zoom-out noshrink-"><span>Tester</span> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></Link>
+                    <Link to="/login" className="btn noshrink- fmld-round fmld-pdg-8 fmld-zoom-out fmld-hide-mobile" viewTransition>Connexion</Link>
+                    <button className="btn fmld-pdg-8 noshrink- fmld-round fmld-zoom-out fmld-hide-nomobile" ><svg className="fmld-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
                 </span>
             </div>
 

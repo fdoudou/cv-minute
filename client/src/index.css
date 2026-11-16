@@ -729,6 +729,10 @@ button,
   flex-wrap: wrap
 }
 
+.noshrink {
+  flex-shrink: 0
+}
+
 .items-start {
   align-items: flex-start
 }
