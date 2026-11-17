@@ -6,7 +6,6 @@ import CVPreview from './components/CVPreview';
 import Header from "./components/Header.jsx";
 import Home from "./Home.jsx";
 import Login from "./Login.jsx";
-import Register from "./Register.jsx";
 import Templates from "./Templates.jsx";
 import Preview from "./Preview.jsx";
 import Nopage from "./Nopage";
@@ -42,9 +41,9 @@ function App() {
         <Route path="login" element={<Login />}>
 
         </Route>
-        <Route path="register" element={<Register />}>
+        {/* <Route path="register" element={<Register />}>
 
-        </Route>
+        </Route> */}
         <Route path="*" element={<Nopage />}>
 
         </Route>

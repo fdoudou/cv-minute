@@ -1,28 +1,32 @@
-import { useEffect, useReducer,useRef,useState,useContext,ViewTransition } from "react";
+import { useEffect, useReducer,useRef,useState,useContext } from "react";
 import { Link } from "react-router-dom";
 import { MyContext,ThemeContext } from "./Context.jsx";
 import { useFetch } from "./FetchHook.jsx";
 
-export default function Login(props) {
+function Register(props) {
   const { theme, toggleTheme } = useContext(ThemeContext);
     // const { user, setUser } = useContext(MyContext);
+    // const { isLoading, data, error } = useFetch("https://shiny-backend--softgeekvert.replit.app/survey");
+    const [connectType,setConnectType] = useState("login");
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
-    // const { isLoading, data, error } = useFetch("https://shiny-backend--softgeekvert.replit.app/survey");
-
+    const phoneRef = useRef(null);
+    function toggleConnectType(type) {
+      connectType == "signup"? setConnectType("login"):setConnectType("signup");
+    }
     function signup(params) {
       
     }
   return (
-    <ViewTransition>
-        <main className={`fmld-mrg-16 bkgd-${theme} grid-c-1 grid-center items-center justify-center fmld-pdg fmld-rounded`}>
-        <h1 className="fmld-center">Connexion</h1>
-        <form action="" method="post" className="dz-w-100 fmld-centered">
+      <main className={`fmld-mrg-16 bkgd-${theme} grid-c-1 grid-center items-center justify-center fmld-pdg fmld-rounded`}>
+        <h1 className="fmld-center">{connectType == "signup"? "Créer un compte":"Connexion"}</h1>
+        <form id="registration-form" action="" method="post" className="fmld-width-100 fmld-centered">
+          {connectType == "signup"&&
           <div className="fmld-pdg-top-bottom fmld-width-100">
             <label htmlFor="email" className="form-label fmld-medium fmld-pdg-top-bottom">
               Nom d'utilisateur (adresse email)
             </label>
-            <div className="has-validation fmld-width-90">
+            <div className="fmld-width-100">
               <input
                 ref={emailRef}
                 type="email"
@@ -32,12 +36,12 @@ export default function Login(props) {
               ></input>
               <div className="invalid-feedback fmld-small">L'adress email de votre compte.</div>
             </div>
-          </div>
+          </div>}
           <div className="fmld-pdg-top-bottom fmld-width-100">
             <label htmlFor="password" className="form-label fmld-medium fmld-pdg-top-bottom">
               Mot de passe
             </label>
-            <div className="has-validation fmld-width-90">
+            <div className="fmld-width-100">
               <input
                 ref={passwordRef}
                 minLength={6}
@@ -49,18 +53,37 @@ export default function Login(props) {
               <div className="invalid-feedback fmld-small">Le mot de passe de votre compte.</div>
             </div>
           </div>
+          <div className="fmld-pdg-top-bottom fmld-width-100">
+            <label htmlFor="phone" className="form-label fmld-medium fmld-pdg-top-bottom">
+              Numéro de téléphone
+            </label>
+            <div className="fmld-width-100">
+              <input
+                ref={phoneRef}
+                minLength={9}
+                maxLength={9}
+                pattern="^\d+$"
+                type="tel"
+                inputMode="numeric"
+                className="form-control fmld-pdg fmld-width-100 fmld-rounded border-gray"
+                id="phone"
+                required
+              ></input>
+              <div className="invalid-feedback fmld-small">Doit contenir exatement 9 chiffres.</div>
+            </div>
+          </div>
           <div className="fmld-width-100 fmld-pdg-top">
             <button onClick={signup} className="btn fmld-round fmld-pdg-10 fmld-width-100 primary text-white fmld-ripple fmld-medium" type="submit">
-              Se connecter
+              {connectType == "signup"? "S'inscrire":"Se connecter"}
             </button>
           </div>
             <p className="fmld-mrg-top">
-                Vous n'avez pas de compte?{" "}
-                <Link to="/register" className="text-primary">Inscrivez-vous</Link>{" "}
+              {connectType == "signup"? "Vous avez déjà un compte?":"Vous n'avez pas un compte?"}
+              <button type="button" className="text-primary transparent fmld-medium" onClick={()=>{toggleConnectType("signup")}}>{connectType == "signup"? "Connectez-vous":"Inscrivez-vous"}</button>{" "}
             </p>
         </form>
       </main>
-    </ViewTransition>
-      
   );
 }
+
+export default Register;
