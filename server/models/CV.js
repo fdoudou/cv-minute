@@ -1,31 +1,44 @@
-const mongoose = require('mongoose');
+let mysql = require('mysql');
+let con = mysql.createConnection({
+  host: "localhost",
+  user: "yourusername",
+  password: "yourpassword",
+  database: "mydb"
+});
 
-const CVSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  title: { type: String, default: 'Untitled CV' },
-  personalInfo: {
-    fullName: String,
-    email: String,
-    phone: String,
-    location: String,
-    website: String,
-    summary: String
-  },
-  experience: [{
-    company: String,
-    position: String,
-    startDate: String,
-    endDate: String,
-    description: String
-  }],
-  education: [{
-    institution: String,
-    degree: String,
-    startDate: String,
-    endDate: String
-  }],
-  skills: [String],
-  themeColor: { type: String, default: '#3b82f6' }
-}, { timestamps: true });
+const db = con.connect(function(err) {
+  if (err) throw err;
+  console.log('Connected to MySQL');
+});
 
-module.exports = mongoose.model('CV', CVSchema);
+const getCV = db.query("SELECT cv_id, cv_name, is_private, template, accent_color, professional_summary, num_views, num_shares, num_downloads, creation_date, last_modified FROM cv WHERE cv_id = ?", [id], function (err, result, fields) {
+  if (err) throw err;
+  console.log(result);
+});
+
+const getCVs = db.query("SELECT cv_id, cv_name, is_private, template, accent_color, professional_summary, num_views, num_shares, num_downloads, creation_date, last_modified FROM cv WHERE user_id = ?", [id], function (err, result, fields) {
+  if (err) throw err;
+  console.log(result);
+});
+
+const getPublicCVs = db.query("SELECT cv_id, cv_name, is_private, template, accent_color, professional_summary, num_views, num_shares, num_downloads, creation_date, last_modified FROM cv WHERE user_id = ?", [id], function (err, result, fields) {
+  if (err) throw err;
+  console.log(result);
+});
+
+const createCV = db.query("INSERT INTO cv (cv_name, is_private, template, accent_color, professional_summary) VALUES (?,?,?,?,?)", function (err, result, fields) {
+  if (err) throw err;
+  console.log(result);
+});
+
+const updateCV = db.query("UPDATE cv SET cv_name = ?, is_private = ?, template = ?, accent_color = ?, professional_summary = ? WHERE cv_id = ?", [id], function (err, result, fields) {
+  if (err) throw err;
+  console.log(result);
+});
+
+const deleteCV = db.query("DELETE FROM cv WHERE cv_id = ?", [id], function (err, result, fields) {
+  if (err) throw err;
+  console.log(result);
+});
+
+module.exports = {getCV, getCVs, getPublicCVs, createCV, updateCV, deleteCV}
