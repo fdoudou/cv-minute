@@ -11,34 +11,46 @@ const db = con.connect(function(err) {
   console.log('Connected to MySQL');
 });
 
-const getCV = db.query("SELECT cv_id, cv_name, is_private, template, accent_color, professional_summary, num_views, num_shares, num_downloads, creation_date, last_modified FROM cv WHERE cv_id = ?", [id], function (err, result, fields) {
-  if (err) throw err;
-  console.log(result);
-});
+const getCVModel = function (id) {
+  db.query("SELECT cv_id, cv_name, is_private, template, accent_color, professional_summary, num_views, num_shares, num_downloads, creation_date, last_modified FROM cv WHERE cv_id = ?", [id], function (err, result, fields) {
+    if (err) throw err;
+    return result;
+  });
+} 
 
-const getCVs = db.query("SELECT cv_id, cv_name, is_private, template, accent_color, professional_summary, num_views, num_shares, num_downloads, creation_date, last_modified FROM cv WHERE user_id = ?", [id], function (err, result, fields) {
-  if (err) throw err;
-  console.log(result);
-});
+const getCVsModel = function (id) {
+  db.query("SELECT cv_id, cv_name, is_private, template, accent_color, professional_summary, num_views, num_shares, num_downloads, creation_date, last_modified FROM cv WHERE user_id = ?", [id], function (err, result, fields) {
+    if (err) throw err;
+    return result;
+  });
+} 
 
-const getPublicCVs = db.query("SELECT cv_id, cv_name, is_private, template, accent_color, professional_summary, num_views, num_shares, num_downloads, creation_date, last_modified FROM cv WHERE user_id = ?", [id], function (err, result, fields) {
-  if (err) throw err;
-  console.log(result);
-});
+const getPublicCVsModel = function (id) {
+  db.query("SELECT cv_id, cv_name, is_private, template, accent_color, professional_summary, num_views, num_shares, num_downloads, creation_date, last_modified FROM cv WHERE user_id = ?", [id], function (err, result, fields) {
+    if (err) throw err;
+    return result;
+  });
+} 
 
-const createCV = db.query("INSERT INTO cv (cv_name, is_private, template, accent_color, professional_summary) VALUES (?,?,?,?,?)", function (err, result, fields) {
-  if (err) throw err;
-  console.log(result);
-});
+const createCVModel = function ([...datas]) {
+  db.query("INSERT INTO cv (cv_name, is_private, template, accent_color, professional_summary) VALUES (?,?,?,?,?)", [...datas], function (err, result, fields) {
+    if (err) throw err;
+    return result;
+  });
+} 
 
-const updateCV = db.query("UPDATE cv SET cv_name = ?, is_private = ?, template = ?, accent_color = ?, professional_summary = ? WHERE cv_id = ?", [id], function (err, result, fields) {
-  if (err) throw err;
-  console.log(result);
-});
+const updateCVModel = function (id) {
+  db.query("UPDATE cv SET cv_name = ?, is_private = ?, template = ?, accent_color = ?, professional_summary = ? WHERE cv_id = ?", [id], function (err, result, fields) {
+    if (err) throw err;
+    return result;
+  });
+} 
 
-const deleteCV = db.query("DELETE FROM cv WHERE cv_id = ?", [id], function (err, result, fields) {
-  if (err) throw err;
-  console.log(result);
-});
+const deleteCVModel = function (id) {
+  db.query("DELETE FROM cv WHERE cv_id = ?", [id], function (err, result, fields) {
+    if (err) throw err;
+    return result;
+  });
+} 
 
-module.exports = {getCV, getCVs, getPublicCVs, createCV, updateCV, deleteCV}
+module.exports = {getCVModel, getCVsModel, getPublicCVsModel, createCVModel, updateCVModel, deleteCVModel}
