@@ -1,4 +1,4 @@
-const {getCVModel, getCVsModel, getPublicCVsModel, createCVModel, updateCVModel, deleteCVModel} = require("../models/cv");
+const {getCVModel, getCVsModel, getPublicCVsModel, createCVModel, updateCVModel, deleteCVModel} = require("../models/CV.js");
 
 const getCV = (req, res) => {
     const cv = getCVModel(req.params.id);

@@ -11,24 +11,24 @@ const db = con.connect(function(err) {
   console.log('Connected to MySQL');
 });
 
-const getUser = db.query("SELECT user_id, user_name, email, password, registration_date FROM user WHERE user_id = ?", [id], function (err, result, fields) {
+const getUserModel = db.query("SELECT user_id, user_name, email, password, registration_date FROM user WHERE user_id = ?", [id], function (err, result, fields) {
   if (err) throw err;
   console.log(result);
 });
 
-const createUser = db.query("INSERT INTO user (user_name, email, password) VALUES (?,?,?)", function (err, result, fields) {
+const createUserModel = db.query("INSERT INTO user (user_name, email, password) VALUES (?,?,?)", function (err, result, fields) {
   if (err) throw err;
   console.log(result);
 });
 
-const updateUser = db.query("UPDATE user SET user_name = ?, email = ?, password = ? WHERE user_id = ?", [id], function (err, result, fields) {
+const updateUserModel = db.query("UPDATE user SET user_name = ?, email = ?, password = ? WHERE user_id = ?", [id], function (err, result, fields) {
   if (err) throw err;
   console.log(result);
 });
 
-const deleteUser = db.query("DELETE FROM user WHERE user_id = ?", [id], function (err, result, fields) {
+const deleteUserModel = db.query("DELETE FROM user WHERE user_id = ?", [id], function (err, result, fields) {
   if (err) throw err;
   console.log(result);
 });
 
-module.exports = {getUser, createUser, updateUser, deleteUser}
+module.exports = {getUserModel, createUserModel, updateUserModel, deleteUserModel}
