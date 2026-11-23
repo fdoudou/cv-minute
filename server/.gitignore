@@ -14,9 +14,13 @@ build/
 coverage/
 .env
 .env.local
+.env.example
 .cache/
 *.tsbuildinfo
 models/cvminutedb.sql
+
+# Custom 
+isrgrootx1.pem
 
 # Visual Studio Code
 .vscode/*
