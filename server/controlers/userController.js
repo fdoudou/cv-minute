@@ -10,7 +10,8 @@ const getUser = (req, res) => {
 }
 
 const createUser = (req, res) => {
-    const user = createUserModel(req.params.user_name, req.params.email, req.params.password);
+    // const { name, email, password } = req.body;
+    const user = createUserModel(req.body.user_name, req.body.email, req.body.password);
     if (!user) {
         res.status(400).send('Not found.')
     } else {
@@ -19,7 +20,7 @@ const createUser = (req, res) => {
 }
 
 const updateUser = (req, res) => {
-    const user = updateUserModel(req.params.user_name, req.params.email, req.params.password, req.params.id);
+    const user = updateUserModel(req.body.user_name, req.body.email, req.body.password, req.body.id);
     if (!user) {
         res.status(400).send('Not found.')
     } else {
@@ -28,7 +29,7 @@ const updateUser = (req, res) => {
 }
 
 const deleteUser = (req, res) => {
-    const user = deleteUserModel(req.params.id);
+    const user = deleteUserModel(req.body.id);
     if (!user) {
         res.status(400).send('Not found.')
     } else {

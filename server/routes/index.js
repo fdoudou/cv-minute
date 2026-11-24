@@ -9,7 +9,7 @@ router.post('/user', createUser);
 // Return a user
 router.get('/user/:id', getUser);
 // Remove a user
-router.delete('/user/:id', deleteUser);
+router.delete('/user', deleteUser);
 // Update user
 router.put('/user', updateUser);
 // Get a cv

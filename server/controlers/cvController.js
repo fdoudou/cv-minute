@@ -28,7 +28,7 @@ const getPublicCVs = (req, res) => {
 }
 
 const createCV = (req, res) => {
-    const cv = createCVModel(req.params.cv_name, req.params.is_private, req.params.template, req.params.accent_color, req.params.professional_summary);
+    const cv = createCVModel(req.body.cv_name, req.body.is_private, req.body.template, req.body.accent_color, req.body.professional_summary);
     if (!cv) {
         res.status(400).send('Not found.')
     } else {
@@ -37,7 +37,7 @@ const createCV = (req, res) => {
 }
 
 const updateCV = (req, res) => {
-    const cv = updateCVModel(req.params.id, req.params.is_private, req.params.template, req.params.accent_color, req.params.professional_summary);
+    const cv = updateCVModel(req.body.id, req.body.is_private, req.body.template, req.body.accent_color, req.body.professional_summary);
     if (!cv) {
         res.status(400).send('Not found.')
     } else {
@@ -46,7 +46,7 @@ const updateCV = (req, res) => {
 }
 
 const deleteCV = (req, res) => {
-    const cv = deleteCVModel(req.params.id);
+    const cv = deleteCVModel(req.body.id);
     if (!cv) {
         res.status(400).send('Not found.')
     } else {
