@@ -19,7 +19,7 @@ function Register(props) {
     }
   return (
       <main className={`fmld-mrg-16 bkgd-${theme} grid-c-1 grid-center items-center justify-center fmld-pdg fmld-rounded`}>
-        <h1 className="fmld-center">{connectType == "signup"? "Créer un compte":"Connexion"}</h1>
+        <h1 className="text-center">{connectType == "signup"? "Créer un compte":"Connexion"}</h1>
         <form id="registration-form" action="" method="post" className="fmld-width-100 fmld-centered">
           {connectType == "signup"&&
           <div className="fmld-pdg-top-bottom fmld-width-100">
